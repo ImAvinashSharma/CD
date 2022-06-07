@@ -1,59 +1,40 @@
-//5.Write a Program to implement Top Down Parsing for a given Grammar
+#include <stdio.h>
 
-#include<stdio.h>
+#include <string.h>
 
-char input[100];
-int i,error; // by default i and error initializes to 0
-
+char str[10];
+int i, error;
+void A();
+void B();
+void S();
 int main()
 {
-    printf("Recursive descent parsing for grammar\n");
-    printf("\nE->TE'\nE'->+TE'/@\nT->FT'\nT'->*FT'/@\nF->(E)/ID\n\n");
-    gets(input);
-
-    E();
-
-    if(input[i]=='\0' && error==0){
-         printf("string is Accepted");
-    }
-    else{
-        printf("String rejected");
-    }
-
+    i = 0;
+    error = 0;
+    printf("enter the string");
+    scanf("%s", str);
+    S();
+    if (strlen(str) == i && error == 0)
+        printf("Given grammer is Accepted\n");
+    else
+        printf("Given grammer is not accepted\n");
 }
-E(){
-    T();
-    Eds();
+void S()
+{
+    A();
+    B();
 }
-T(){
-    F();
-    Tds();
-}
-Eds(){
-    if(input[i]=='+'){
-        i++;
-        T();
-        Eds();
-    }
-}
-Tds(){
-    if(input[i]=='*'){
-        i++;
-        F();
-        Tds();
-    }
-}
-F(){
-    if(input[i]=='('){
-        i++;
-        E();
+void A()
+{
+    if (str[i] == 'a')
+    {
         i++;
     }
-    else if(input[i]=='i'){
+}
+void B()
+{
+    if (str[i] == 'b')
+    {
         i++;
     }
-    else{
-        error=1;
-    }
 }
-
